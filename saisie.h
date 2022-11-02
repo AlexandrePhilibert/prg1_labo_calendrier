@@ -11,4 +11,9 @@ int saisie(const std::string& msgInvite,
            int min,
            int max);
 
+bool saisie(const std::string& msgInvite,
+            const std::string& msgErreur,
+            char charVrai,
+            char charFaux);
+
 #endif //LABO_CALENDRIER_SAISIE_H
