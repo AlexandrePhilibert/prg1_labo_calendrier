@@ -2,10 +2,13 @@
 // Fichier        : Labo_04_K.cpp
 // Auteur(s)      : Cosmo De Oliveira Maria Vitória & PHILIBERT Alexandre
 // Date           : 2022-11-01
-// But            : Affiche le calendrier complet pour une année [1800 - 2100] en tenant compte
-//                  des années bissextiles.
+// But            : Affiche le calendrier complet pour une année [1800 - 2100].
 // Modifications  : NIL
-// Remarque(s)    :
+// Remarque(s)    : Le calendrier est imprimé selon le format demandé dans la
+// 					  consigne et prend en compte les années bissextiles. La saisie
+// 					  utilisateur est contrôlée et doit être comprise dans l'intervalle
+// 					  [1800 - 2100]. Une fois le calendrier affiché, l'application
+// 					  demande à l'utilisateur de quitter ou recommencer l'opération.
 // Compilateur    : g++ 11.2.0
 // Standard C++   : C++ 20
 // -----------------------------------------------------------------------------------------------
