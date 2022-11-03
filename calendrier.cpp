@@ -16,6 +16,8 @@ bool estBissextile(const int annee) {
 /**
  *  Calcule l'index [0-6] d'une date donnée, 0 = Lundi, 6 = Dimanche
  *  Le mois est compris entre [0 - 11]
+ *
+ *  Repris de : https://cplusplus.com/reference/ctime/mktime/
  */
 int indexJour(const int jour, const int mois, const int annee) {
    time_t rawtime;
@@ -101,11 +103,11 @@ void afficherCalendrier(const int annee) {
 
       afficherEntete(mois, annee);
 
-      for (int cellule = 1; cellule <= nombreJoursMoisActuel + indexPremierJourMois; ++cellule) {
-         if (cellule <= indexPremierJourMois) {
+      for (int cellule = 1; cellule < nombreJoursMoisActuel + indexPremierJourMois; ++cellule) {
+         if (cellule < indexPremierJourMois) {
             cout << string(LARGEUR_CELLULE + 1, ' ');
          } else {
-            cout << setw(LARGEUR_CELLULE) << cellule - indexPremierJourMois << " ";
+            cout << setw(LARGEUR_CELLULE) << cellule - indexPremierJourMois + 1 << " ";
          }
 
          // Recommencer une nouvelle ligne lorsque la cellule actuelle = dimanche,
