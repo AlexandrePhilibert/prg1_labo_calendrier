@@ -9,6 +9,10 @@ using namespace std;
 
 const int LARGEUR_CELLULE = 2;
 
+/**
+ *  Une année est bissextile si elle est divisible par 400,
+ *  ou par 4 et pas pas 100.
+ */
 bool estBissextile(int annee) {
    return (annee % 400 == 0) || ((annee % 4 == 0) && (annee % 100 != 0));
 }
@@ -19,7 +23,7 @@ bool estBissextile(int annee) {
  *
  *  Repris de : https://cplusplus.com/reference/ctime/mktime/
  */
-int indexJour(int jour, int mois, int annee) {
+int indexJourSemaine(int jour, int mois, int annee) {
    time_t rawtime;
    struct tm* timeinfo;
 
@@ -73,10 +77,10 @@ string nomMois(int mois) {
 }
 
 /**
- *  Retourne le nom d'un jour
+ *  Retourne le nom d'un jour en fonction de sa position, entre [0-6]
  */
 string nomJour(int jour) {
-   static const vector<string> JOURS = {"L", "M", "M", "J", "V", "S", "D" };
+   static const vector<string> JOURS = { "L", "M", "M", "J", "V", "S", "D" };
 
    // volontairement un .at pour lever une exception
    return JOURS.at(size_t(jour));
@@ -84,24 +88,26 @@ string nomJour(int jour) {
 
 /**
  *  Affiche un mois selon le mois et l'année passé en paramètre.
+ *
+ *  Un mois est représenté par une entête, suivi d'une grille de cellules représentant les jours du mois actuel,
+ *  ainsi que précédant et suivant si nécessaire selon la position du premier et dernier jour du mois.
  */
 void afficherMois(int mois, int annee) {
-   int nombreJoursMoisActuel;
-   int indexPremierJourMois;
+   int indexPremierJourMois,
+       nombreCellulesTotal;
 
-   indexPremierJourMois = indexJour(1, mois, annee);
-   nombreJoursMoisActuel = nombreJoursMois(mois, annee);
+   indexPremierJourMois = indexJourSemaine(1, mois, annee);
+   // Le nombre de cellules total à afficher, en prenant en compte les cellules vides au début de chaque mois.
+   nombreCellulesTotal = nombreJoursMois(mois, annee) + indexPremierJourMois;
 
+   // Affichage de l'entête
    cout << nomMois(mois) << " " << annee  << " " << endl;
-
    for (int jour = 0; jour < 7; ++jour) {
       cout << setw(LARGEUR_CELLULE) << nomJour(jour) << " ";
    }
-
    cout << endl;
 
-   // Le nombre de cellules total à afficher, en prenant en compte les cellules vides au début de chaque mois.
-   int nombreCellulesTotal = nombreJoursMoisActuel + indexPremierJourMois;
+   // affichage de la grille de cellule
    for (int cellule = 1; cellule < nombreCellulesTotal; ++cellule) {
       if (cellule < indexPremierJourMois) {
          cout << string(LARGEUR_CELLULE + 1, ' ');

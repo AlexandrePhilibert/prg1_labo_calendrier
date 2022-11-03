@@ -2,10 +2,9 @@
 #define LABO_CALENDRIER_CALENDRIER_H
 
 /**
- *  Une année est bissextile si elle est divisible par 400,
- *  ou par 4 et pas pas 100.
+ * Affiche le calendrier d'une année donnée.
+ * Prends on considération les années bissextiles.
  */
-
-void afficherCalendrier(const int annee);
+void afficherCalendrier(int annee);
 
 #endif //LABO_CALENDRIER_CALENDRIER_H

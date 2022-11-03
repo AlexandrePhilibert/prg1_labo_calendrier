@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// Repris de la démo : https://github.com/gmbreguet/PRG1_DEMO/blob/40f1ef41f8f2ee1d8c1a1c7fc1cc562b88e620c8/04_Fonctions/04_nbreJoursMois.cpp#L45
 int saisie(const string& msgInvite,
            const string& msgErreur,
            const int min,
@@ -32,7 +31,6 @@ int saisie(const string& msgInvite,
    return saisie;
 }
 
-// Repris de la démo : https://github.com/gmbreguet/PRG1_DEMO/blob/40f1ef41f8f2ee1d8c1a1c7fc1cc562b88e620c8/04_Fonctions/04_nbreJoursMois.cpp#L45
 bool saisie(const string& msgInvite,
             const string& msgErreur,
             const char charVrai,
