@@ -82,7 +82,16 @@ string nomJour(const int jour) {
    return JOURS.at(size_t(jour));
 }
 
-void afficherEntete(const int mois, const int annee) {
+/**
+ *  Affiche un mois selon le mois et l'année passé en paramètre.
+ */
+void afficherMois(const int mois, const int annee) {
+   int nombreJoursMoisActuel;
+   int indexPremierJourMois;
+
+   indexPremierJourMois = indexJour(1, mois, annee);
+   nombreJoursMoisActuel = nombreJoursMois(mois, annee);
+
    cout << nomMois(mois) << " " << annee  << " " << endl;
 
    for (int jour = 0; jour < 7; ++jour) {
@@ -90,31 +99,26 @@ void afficherEntete(const int mois, const int annee) {
    }
 
    cout << endl;
+
+   for (int cellule = 1; cellule < nombreJoursMoisActuel + indexPremierJourMois; ++cellule) {
+      if (cellule < indexPremierJourMois) {
+         cout << string(LARGEUR_CELLULE + 1, ' ');
+      } else {
+         cout << setw(LARGEUR_CELLULE) << cellule - indexPremierJourMois + 1 << " ";
+      }
+
+      // Recommencer une nouvelle ligne lorsque la cellule actuelle = dimanche,
+      // et que la cellule n'est pas la dernière du mois, sinon deux retours à la ligne sont effectués.
+      if (cellule % 7 == 0 && cellule <= nombreJoursMoisActuel + indexPremierJourMois - 1) {
+         cout << endl;
+      }
+   }
+
 }
 
 void afficherCalendrier(const int annee) {
-   int nombreJoursMoisActuel;
-   int indexPremierJourMois;
-
    for (int mois = 0; mois < 12; ++mois) {
-      indexPremierJourMois = indexJour(1, mois, annee);
-      nombreJoursMoisActuel = nombreJoursMois(mois, annee);
-
-      afficherEntete(mois, annee);
-
-      for (int cellule = 1; cellule < nombreJoursMoisActuel + indexPremierJourMois; ++cellule) {
-         if (cellule < indexPremierJourMois) {
-            cout << string(LARGEUR_CELLULE + 1, ' ');
-         } else {
-            cout << setw(LARGEUR_CELLULE) << cellule - indexPremierJourMois + 1 << " ";
-         }
-
-         // Recommencer une nouvelle ligne lorsque la cellule actuelle = dimanche,
-         // et que la cellule n'est pas la dernière du mois, sinon deux retours à la ligne sont effectués.
-         if (cellule % 7 == 0 && cellule <= nombreJoursMoisActuel + indexPremierJourMois - 1) {
-            cout << endl;
-         }
-      }
+      afficherMois(mois, annee);
 
       // Sépare chaque mois d'une ligne vide
       cout << endl << endl;
