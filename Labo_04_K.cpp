@@ -33,11 +33,14 @@ int main() {
    bool         recommencer;
 
    do {
-      annee = saisie("Veuillez saisir l'annee a afficher : ", MSG_ERREUR, ANNEE_MIN, ANNEE_MAX);
+      annee = saisie("Veuillez saisir l'annee a afficher : ",
+							MSG_ERREUR, ANNEE_MIN, ANNEE_MAX);
 
       afficherCalendrier(annee);
 
-      recommencer = saisie("Voulez-vous recommencer", MSG_ERREUR_CHOIX, RECOMMENCER_VRAI, RECOMMENCER_FAUX);
+      recommencer = saisie("Voulez-vous recommencer",
+									MSG_ERREUR_CHOIX, RECOMMENCER_VRAI,
+									RECOMMENCER_FAUX);
    } while (recommencer);
 
    cout << "Pressez ENTER pour quitter";

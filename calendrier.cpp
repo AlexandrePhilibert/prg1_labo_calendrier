@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------------------------------------
+// Fichier        : Labo_04_K.cpp
+// Auteur(s)      : Cosmo De Oliveira Maria Vitória & PHILIBERT Alexandre
+// Date           : 2022-11-01
+// But            :
+// Modifications  : NIL
+// Remarque(s)    :
+// Compilateur    : g++ 11.2.0
+// Standard C++   : C++ 20
+// -----------------------------------------------------------------------------------------------
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -39,7 +50,8 @@ int indexJourSemaine(int jour, int mois, int annee) {
 }
 
 /**
- *  Retourne le nombre de jour d'un mois donné, prends en considération les années bissextiles.
+ *  Retourne le nombre de jour d'un mois donné, prends en considération les années
+ *  bissextiles.
  *  Le mois doit être compris entre [0, 11], sinon -1 est retourné.
  *
  *  Repris de la démo : https://github.com/gmbreguet/PRG1_DEMO/blob/40f1ef41f8f2ee1d8c1a1c7fc1cc562b88e620c8/04_Fonctions/04_nbreJoursMois.cpp#L79
@@ -89,8 +101,10 @@ string nomJour(int jour) {
 /**
  *  Affiche un mois selon le mois et l'année passé en paramètre.
  *
- *  Un mois est représenté par une entête, suivi d'une grille de cellules représentant les jours du mois actuel,
- *  ainsi que précédant et suivant si nécessaire selon la position du premier et dernier jour du mois.
+ *  Un mois est représenté par une entête, suivi d'une grille de cellules
+ *  représentant les jours du mois actuel,
+ *  ainsi que précédant et suivant si nécessaire selon la position du premier et
+ *  dernier jour du mois.
  */
 void afficherMois(int mois, int annee) {
    int indexPremierJourMois,
