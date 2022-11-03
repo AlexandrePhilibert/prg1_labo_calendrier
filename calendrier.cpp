@@ -100,7 +100,9 @@ void afficherMois(const int mois, const int annee) {
 
    cout << endl;
 
-   for (int cellule = 1; cellule < nombreJoursMoisActuel + indexPremierJourMois; ++cellule) {
+   // Le nombre de cellules total à afficher, en prenant en compte les cellules vides au début de chaque mois.
+   int nombreCellulesTotal = nombreJoursMoisActuel + indexPremierJourMois;
+   for (int cellule = 1; cellule < nombreCellulesTotal; ++cellule) {
       if (cellule < indexPremierJourMois) {
          cout << string(LARGEUR_CELLULE + 1, ' ');
       } else {
@@ -109,11 +111,10 @@ void afficherMois(const int mois, const int annee) {
 
       // Recommencer une nouvelle ligne lorsque la cellule actuelle = dimanche,
       // et que la cellule n'est pas la dernière du mois, sinon deux retours à la ligne sont effectués.
-      if (cellule % 7 == 0 && cellule <= nombreJoursMoisActuel + indexPremierJourMois - 1) {
+      if (cellule % 7 == 0 && cellule < nombreCellulesTotal - 1) {
          cout << endl;
       }
    }
-
 }
 
 void afficherCalendrier(const int annee) {
