@@ -9,7 +9,7 @@ using namespace std;
 
 const int LARGEUR_CELLULE = 2;
 
-bool estBissextile(const int annee) {
+bool estBissextile(int annee) {
    return (annee % 400 == 0) || ((annee % 4 == 0) && (annee % 100 != 0));
 }
 
@@ -19,7 +19,7 @@ bool estBissextile(const int annee) {
  *
  *  Repris de : https://cplusplus.com/reference/ctime/mktime/
  */
-int indexJour(const int jour, const int mois, const int annee) {
+int indexJour(int jour, int mois, int annee) {
    time_t rawtime;
    struct tm* timeinfo;
 
@@ -40,7 +40,7 @@ int indexJour(const int jour, const int mois, const int annee) {
  *
  *  Repris de la démo : https://github.com/gmbreguet/PRG1_DEMO/blob/40f1ef41f8f2ee1d8c1a1c7fc1cc562b88e620c8/04_Fonctions/04_nbreJoursMois.cpp#L79
  */
-int nombreJoursMois(const int mois, const int annee) {
+int nombreJoursMois(int mois, int annee) {
    switch (mois) {
       case 1: return 28 + estBissextile(annee);
       case 3:
@@ -64,7 +64,7 @@ int nombreJoursMois(const int mois, const int annee) {
  *
  * Repris de la démo : https://github.com/gmbreguet/PRG1_DEMO/blob/40f1ef41f8f2ee1d8c1a1c7fc1cc562b88e620c8/04_Fonctions/04_nbreJoursMois.cpp#L100
  */
-string nomMois(const int mois) {
+string nomMois(int mois) {
    static const vector<string> MOIS = { "Janvier", "Fevrier", "Mars",      "Avril",   "Mai",      "Juin",
                                         "Juillet", "Aout",    "Septembre", "Octobre", "Novembre", "Decembre" };
 
@@ -75,7 +75,7 @@ string nomMois(const int mois) {
 /**
  *  Retourne le nom d'un jour
  */
-string nomJour(const int jour) {
+string nomJour(int jour) {
    static const vector<string> JOURS = {"L", "M", "M", "J", "V", "S", "D" };
 
    // volontairement un .at pour lever une exception
@@ -85,7 +85,7 @@ string nomJour(const int jour) {
 /**
  *  Affiche un mois selon le mois et l'année passé en paramètre.
  */
-void afficherMois(const int mois, const int annee) {
+void afficherMois(int mois, int annee) {
    int nombreJoursMoisActuel;
    int indexPremierJourMois;
 
@@ -117,7 +117,7 @@ void afficherMois(const int mois, const int annee) {
    }
 }
 
-void afficherCalendrier(const int annee) {
+void afficherCalendrier(int annee) {
    for (int mois = 0; mois < 12; ++mois) {
       afficherMois(mois, annee);
 
