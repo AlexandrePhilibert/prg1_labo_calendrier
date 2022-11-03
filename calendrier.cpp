@@ -10,7 +10,7 @@ using namespace std;
 const int LARGEUR_CELLULE = 2;
 
 bool estBissextile(const int annee) {
-   return (annee % 400 == 0) || (annee % 4 == 0) && (annee % 100 != 0);
+   return (annee % 400 == 0) || ((annee % 4 == 0) && (annee % 100 != 0));
 }
 
 /**
@@ -21,7 +21,6 @@ bool estBissextile(const int annee) {
  */
 int indexJour(const int jour, const int mois, const int annee) {
    time_t rawtime;
-   // TODO: utilisé référence ?
    struct tm* timeinfo;
 
    time(&rawtime);
