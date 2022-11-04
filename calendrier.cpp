@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------------------------
-// Fichier        : Labo_04_K.cpp
-// Auteur(s)      : Cosmo De Oliveira Maria Vitória & PHILIBERT Alexandre
+// Fichier        : calendrier.cpp
+// Auteur(s)      : OLIVEIRA Vitória & PHILIBERT Alexandre
 // Date           : 2022-11-01
 // But            :
 // Modifications  : NIL

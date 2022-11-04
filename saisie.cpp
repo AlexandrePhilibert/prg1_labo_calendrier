@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------------------------------------
+// Fichier        : saisie.cpp
+// Auteur(s)      : OLIVEIRA Vitória & PHILIBERT Alexandre
+// Date           : 2022-11-01
+// But            : Fonctions responsables de toute la saisie utilisateur, gestion
+// 					  du flux, répétition ou fin du programme.
+// Modifications  : NIL
+// Remarque(s)    :
+// Compilateur    : g++ 11.2.0
+// Standard C++   : C++ 20
+// -----------------------------------------------------------------------------------------------
 #include <iostream>
 #include <string>
 #include <limits>
