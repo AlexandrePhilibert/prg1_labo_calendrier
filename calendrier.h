@@ -2,8 +2,8 @@
 // Fichier        : calendrier.h
 // Auteur(s)      : OLIVEIRA Vitória & PHILIBERT Alexandre
 // Date           : 2022-11-01
-// But            : Fonction responsable de l'affichage du calendrier de l'annéee
-// 					 demandée par l'utilisateur.
+// But            : Fonctions responsables des calculs des caractéristiques du
+// 					  calendrier, ainsi que de son affichage.
 // Modifications  : NIL
 // Remarque(s)    : On prend en considération les années bissextiles.
 // Compilateur    : g++ 11.2.0

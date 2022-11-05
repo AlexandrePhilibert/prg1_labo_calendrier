@@ -2,9 +2,16 @@
 // Fichier        : calendrier.cpp
 // Auteur(s)      : OLIVEIRA Vitória & PHILIBERT Alexandre
 // Date           : 2022-11-01
-// But            :
+// But            : Fonctions responsables des calculs des caractéristiques du
+// 					  de chaque mois de l'année saisie, ainsi que l'affichage du
+// 					  calendrier de l'année en question.
 // Modifications  : NIL
-// Remarque(s)    :
+// Remarque(s)    : La constante LARGEUR_CELLULE a été déterminée selon l'affiche
+// 					  imposé.
+//						  Plusieurs fonctions ont été reprises ou inspirées des
+//						  démonstrations de M. Guy-Michel BREGUET.
+//						  La librairie "ctime" est utilisée afin de déterminer le jour
+//						  de la semaine du 1er jour de chaque mois de l'année choisie.
 // Compilateur    : g++ 11.2.0
 // Standard C++   : C++ 20
 // -----------------------------------------------------------------------------------------------
@@ -29,8 +36,8 @@ bool estBissextile(int annee) {
 }
 
 /**
- *  Calcule l'index [0-6] d'une date donnée, 0 = Lundi, 6 = Dimanche
- *  Le mois est compris entre [0 - 11]
+ *  Calcule l'index [0-6] d'une date donnée ( 0 = Lundi, 6 = Dimanche ).
+ *  Le mois est compris entre [0 - 11].
  *
  *  Repris de : https://cplusplus.com/reference/ctime/mktime/
  */
@@ -50,7 +57,7 @@ int indexJourSemaine(int jour, int mois, int annee) {
 }
 
 /**
- *  Retourne le nombre de jour d'un mois donné, prends en considération les années
+ *  Retourne le nombre de jour d'un mois donné en tenant compte des années
  *  bissextiles.
  *  Le mois doit être compris entre [0, 11], sinon -1 est retourné.
  *
@@ -76,20 +83,22 @@ int nombreJoursMois(int mois, int annee) {
 
 
 /**
- * Mois est compris entre 0 et 11
+ * Mois est compris entre 0 et 11.
  *
  * Repris de la démo : https://github.com/gmbreguet/PRG1_DEMO/blob/40f1ef41f8f2ee1d8c1a1c7fc1cc562b88e620c8/04_Fonctions/04_nbreJoursMois.cpp#L100
  */
 string nomMois(int mois) {
-   static const vector<string> MOIS = { "Janvier", "Fevrier", "Mars",      "Avril",   "Mai",      "Juin",
-                                        "Juillet", "Aout",    "Septembre", "Octobre", "Novembre", "Decembre" };
+   static const vector<string> MOIS = { "Janvier", "Fevrier", "Mars",      "Avril",
+													 "Mai",      "Juin", "Juillet", "Aout",
+													 "Septembre", "Octobre", "Novembre",
+													 "Decembre" };
 
    // volontairement un .at pour lever une exception
    return MOIS.at(size_t(mois));
 }
 
 /**
- *  Retourne le nom d'un jour en fonction de sa position, entre [0-6]
+ *  Retourne le nom d'un jour en fonction de sa position ( entre [0-6] ).
  */
 string nomJour(int jour) {
    static const vector<string> JOURS = { "L", "M", "M", "J", "V", "S", "D" };
@@ -101,8 +110,8 @@ string nomJour(int jour) {
 /**
  *  Affiche un mois selon le mois et l'année passé en paramètre.
  *
- *  Un mois est représenté par une entête, suivi d'une grille de cellules
- *  représentant les jours du mois actuel,
+ *  Un mois est représenté par une entête indiquant les jours de la semaine , suivi
+ *  d'une grille de cellules représentant les jours du mois actuel,
  *  ainsi que précédant et suivant si nécessaire selon la position du premier et
  *  dernier jour du mois.
  */
@@ -111,7 +120,9 @@ void afficherMois(int mois, int annee) {
        nombreCellulesTotal;
 
    indexPremierJourMois = indexJourSemaine(1, mois, annee);
-   // Le nombre de cellules total à afficher, en prenant en compte les cellules vides au début de chaque mois.
+
+	// Le nombre de cellules total à afficher, en prenant en compte les cellules
+	// vides au début de chaque mois.
    nombreCellulesTotal = nombreJoursMois(mois, annee) + indexPremierJourMois;
 
    // Affichage de l'entête
@@ -121,16 +132,18 @@ void afficherMois(int mois, int annee) {
    }
    cout << endl;
 
-   // affichage de la grille de cellule
+   // Affichage de la grille de cellules
    for (int cellule = 1; cellule < nombreCellulesTotal; ++cellule) {
       if (cellule < indexPremierJourMois) {
          cout << string(LARGEUR_CELLULE + 1, ' ');
       } else {
-         cout << setw(LARGEUR_CELLULE) << cellule - indexPremierJourMois + 1 << " ";
+         cout << setw(LARGEUR_CELLULE) << cellule - indexPremierJourMois + 1
+			<< " ";
       }
 
       // Recommencer une nouvelle ligne lorsque la cellule actuelle = dimanche,
-      // et que la cellule n'est pas la dernière du mois, sinon deux retours à la ligne sont effectués.
+      // et que la cellule n'est pas la dernière du mois.
+		// Dans le cas contraire, deux retours à la ligne sont effectués.
       if (cellule % 7 == 0 && cellule < nombreCellulesTotal - 1) {
          cout << endl;
       }
