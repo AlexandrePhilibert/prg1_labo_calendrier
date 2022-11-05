@@ -36,7 +36,7 @@ bool estBissextile(int annee) {
 }
 
 /**
- *  Calcule l'index [0-6] d'une date donnée ( 0 = Lundi, 6 = Dimanche ).
+ *  Calcule l'index [0-6] dans la semaine d'une date donnée ( 0 = Lundi, 6 = Dimanche ).
  *  Le mois est compris entre [0 - 11].
  *
  *  Repris de : https://cplusplus.com/reference/ctime/mktime/
@@ -53,7 +53,9 @@ int indexJourSemaine(int jour, int mois, int annee) {
 
    mktime(timeinfo);
 
-   return timeinfo->tm_wday;
+   // Transforme la représentation du jour de la semaine de timeinfo (0 = Dimanche, 6 = Samedi)
+   // au format 0 = Lundi, 6 = Dimanche.
+   return timeinfo->tm_wday == 0 ? 6 : timeinfo->tm_wday - 1;
 }
 
 /**
@@ -119,7 +121,9 @@ void afficherMois(int mois, int annee) {
    int indexPremierJourMois,
        nombreCellulesTotal;
 
-   indexPremierJourMois = indexJourSemaine(1, mois, annee);
+   // Les cellules sont numérotées de 0 - nombreCellulesTotal, alors que
+   // l'index du premier jour commence à 0, il est nécessaire d'ajouter 1.
+   indexPremierJourMois = indexJourSemaine(1, mois, annee) + 1;
 
 	// Le nombre de cellules total à afficher, en prenant en compte les cellules
 	// vides au début de chaque mois.
