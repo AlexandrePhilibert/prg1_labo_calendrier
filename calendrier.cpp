@@ -7,11 +7,11 @@
 // 					  calendrier de l'année en question.
 // Modifications  : NIL
 // Remarque(s)    : La constante LARGEUR_CELLULE a été déterminée selon l'affiche
-// 					  imposé.
-//						  Plusieurs fonctions ont été reprises ou inspirées des
-//						  démonstrations de M. Guy-Michel BREGUET.
+//                  imposé.
+//                  Plusieurs fonctions ont été reprises ou inspirées des
+//                  démonstrations de M. Guy-Michel BREGUET.
 //						  La librairie "ctime" est utilisée afin de déterminer le jour
-//						  de la semaine du 1er jour de chaque mois de l'année choisie.
+//                  de la semaine du 1er jour de chaque mois de l'année choisie.
 // Compilateur    : g++ 11.2.0
 // Standard C++   : C++ 20
 // -----------------------------------------------------------------------------------------------
@@ -133,8 +133,8 @@ void afficherMois(int mois, int annee) {
    // l'index du premier jour commence à 0, il est nécessaire d'ajouter 1.
    indexPremierJourMois = indexJourSemaine(1, mois, annee) + 1;
 
-	// Le nombre de cellules total à afficher, en prenant en compte les cellules
-	// vides au début de chaque mois.
+   // Le nombre de cellules total à afficher, en prenant en compte les cellules
+   // vides au début de chaque mois.
    nombreCellulesTotal = nombreJoursMois(mois, annee) + indexPremierJourMois;
 
    // Affichage de l'entête
@@ -155,7 +155,7 @@ void afficherMois(int mois, int annee) {
 
       // Recommencer une nouvelle ligne lorsque la cellule actuelle = dimanche,
       // et que la cellule n'est pas la dernière du mois.
-		// Dans le cas contraire, deux retours à la ligne sont effectués.
+      // Dans le cas contraire, deux retours à la ligne sont effectués.
       if (cellule % 7 == 0 && cellule < nombreCellulesTotal - 1) {
          cout << endl;
       }

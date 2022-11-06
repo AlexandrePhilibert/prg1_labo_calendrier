@@ -47,7 +47,7 @@ bool saisie(const string& msgInvite,
             const char charVrai,
             const char charFaux
 ) {
-   char  saisie;
+   char saisie;
    bool erreur;
 
    do {

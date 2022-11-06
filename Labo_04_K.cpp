@@ -2,15 +2,13 @@
 // Fichier        : Labo_04_K.cpp
 // Auteur(s)      : OLIVEIRA Vitória & PHILIBERT Alexandre
 // Date           : 2022-11-01
-// But            : Ce programme demande à l'utilisateur de saisir une annéee,
-// 					  puis affiche le calendrier complet de la période en question.
+// But            : Ce programme demande à l'utilisateur de saisir une année comprise dans
+//                  l'intervale [1800 - 2100] et affiche le calendrier complet de l'année demandée.
+//                  Une fois le calendrier affiché, l'application demande à l'utilisateur de
+//                  recommencer ou quitter.
 // Modifications  : NIL
 // Remarque(s)    : Le calendrier est imprimé selon le format demandé dans la
-// 					  consigne et prend en compte les années bissextiles.
-// 					  La saisie utilisateur est contrôlée et doit être comprise dans
-// 					  l'intervalle [1800 - 2100]. Une fois le calendrier affiché,
-// 					  l'application demande à l'utilisateur de quitter ou recommencer
-// 					  l'opération.
+//                  consigne et prend en compte les années bissextiles.
 //                  Selon l'implémentation de la librairie ctime, il est possible que les
 //                  dates avant le 1er janvier 1970 ne soient pas gérées correctement, les
 //                  jours du calendrier ne seront donc pas les bons.
@@ -39,13 +37,16 @@ int main() {
 
    do {
       annee = saisie("Veuillez saisir l'annee a afficher : ",
-							MSG_ERREUR, ANNEE_MIN, ANNEE_MAX);
+                     MSG_ERREUR,
+                     ANNEE_MIN,
+                     ANNEE_MAX);
 
       afficherCalendrier(annee);
 
       recommencer = saisie("Voulez-vous recommencer",
-									MSG_ERREUR_CHOIX, RECOMMENCER_VRAI,
-									RECOMMENCER_FAUX);
+                           MSG_ERREUR_CHOIX,
+                           RECOMMENCER_VRAI,
+                           RECOMMENCER_FAUX);
    } while (recommencer);
 
    cout << "Pressez ENTER pour quitter";
