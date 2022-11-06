@@ -16,11 +16,11 @@
 // Standard C++   : C++ 20
 // -----------------------------------------------------------------------------------------------
 
-#include <iostream>
-#include <iomanip>
+#include <iostream>      // cin et cout
+#include <iomanip>       // setw
+#include <ctime>         // mktime et time
 #include <string>
 #include <vector>
-#include <ctime>
 #include "calendrier.h"
 
 using namespace std;
@@ -40,6 +40,14 @@ bool estBissextile(int annee) {
  *  Le mois est compris entre [0 - 11].
  *
  *  Repris de : https://cplusplus.com/reference/ctime/mktime/
+ *
+ *  Le type de time_t n'est pas garanti dans la spécification C, il est possible
+ *  que selon l'implémentation il ne soit pas possible de représenter les dates avant le 1er janvier 1970.
+ *  Dans ce cas la valeur 6 (Dimanche) est retournée
+ *
+ *  Plus d'informations :
+ *  - https://stackoverflow.com/a/471287
+ *  - https://en.cppreference.com/w/c/chrono/time_t
  */
 int indexJourSemaine(int jour, int mois, int annee) {
    time_t rawtime;

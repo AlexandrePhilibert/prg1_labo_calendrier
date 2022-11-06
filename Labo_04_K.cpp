@@ -11,13 +11,16 @@
 // 					  l'intervalle [1800 - 2100]. Une fois le calendrier affiché,
 // 					  l'application demande à l'utilisateur de quitter ou recommencer
 // 					  l'opération.
+//                  Selon l'implémentation de la librairie ctime, il est possible que les
+//                  dates avant le 1er janvier 1970 ne soient pas gérées correctement, les
+//                  jours du calendrier ne seront donc pas les bons.
 // Compilateur    : g++ 11.2.0
 // Standard C++   : C++ 20
 // -----------------------------------------------------------------------------------------------
 
-#include <iostream> // cin et cout
-#include <cstdlib>  // EXIT_SUCCESS
-#include <limits>   // numeric_limits<streamsize>
+#include <iostream>     // cin et cout
+#include <cstdlib>      // EXIT_SUCCESS
+#include <limits>       // numeric_limits<streamsize>
 #include "saisie.h"
 #include "calendrier.h"
 

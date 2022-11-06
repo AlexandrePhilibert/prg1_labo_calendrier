@@ -9,9 +9,9 @@
 // Compilateur    : g++ 11.2.0
 // Standard C++   : C++ 20
 // -----------------------------------------------------------------------------------------------
-#include <iostream>
+#include <iostream>  // cin et cout
+#include <limits>    // numeric_limits
 #include <string>
-#include <limits>
 #include "saisie.h"
 
 using namespace std;
